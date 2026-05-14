@@ -18,19 +18,26 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      gap: 1rem;
     }
     header h1 { margin: 0; font-size: 1.2rem; }
-    header a {
+    nav a {
       margin-left: 1rem;
       color: #0366d6;
       text-decoration: none;
       font-size: 0.95rem;
     }
-    header a:hover { text-decoration: underline; }
+    nav a:hover { text-decoration: underline; }
     .viewer {
       width: 100%;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 70px);
       border: none;
+      display: block;
+    }
+    .fallback {
+      padding: 2rem;
+      text-align: center;
+      color: #555;
     }
   </style>
 </head>
@@ -39,10 +46,14 @@
     <h1>Ioana Frîncu — Resume</h1>
     <nav>
       <a href="Frincu_Ioana_Resume.pdf" download>Download PDF</a>
-      <a href="https://www.linkedin.com/in/frincui">LinkedIn</a>
-      <a href="https://github.com/Flifenstein">GitHub</a>
+      <a href="https://www.linkedin.com/in/frincui" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Flifenstein" target="_blank">GitHub</a>
     </nav>
   </header>
-  <iframe class="viewer" src="Frincu_Ioana_Resume.pdf"></iframe>
+  <object class="viewer" data="Frincu_Ioana_Resume.pdf" type="application/pdf">
+    <div class="fallback">
+      <p>Your browser can't display PDFs inline. <a href="Frincu_Ioana_Resume.pdf">Click here to download the resume</a>.</p>
+    </div>
+  </object>
 </body>
 </html>
