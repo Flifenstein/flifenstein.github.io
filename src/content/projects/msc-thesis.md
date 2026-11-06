@@ -7,7 +7,7 @@ venue: "MSc thesis"
 role: author
 status: completed
 featured: true
-order: 5
+order: 4
 links:
   - { label: PDF, url: "https://aaltodoc.aalto.fi/server/api/core/bitstreams/a3aa1a77-fde0-46fe-a367-fc6e9788bdbc/content" }
   - { label: Aaltodoc record, url: "https://urn.fi/URN:NBN:fi:aalto-202310156390" }

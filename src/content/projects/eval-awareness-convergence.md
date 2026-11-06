@@ -7,7 +7,7 @@ role: runs the chain-of-thought voicing instrument
 venue: "SPAR, in progress"
 status: midterm report out, paper planned
 featured: true
-order: 2
+order: 1
 links:
   - { label: midterm report (PDF), url: "/research/spar-midterm-report.pdf" }
 ---

@@ -407,3 +407,9 @@ footer {
   color: var(--ink-muted);
   padding: 1.5rem 0 3rem;
 }
+
+/* home: research questions between hero and cards */
+.questions {
+  margin-top: 2rem;
+  max-width: 68ch;
+}

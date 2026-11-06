@@ -6,7 +6,7 @@ context: HHAI 2022 (1st International Conference on Hybrid Human-Artificial Inte
 venue: "HHAI 2022, demo paper"
 role: co-author
 featured: true
-order: 4
+order: 5
 links:
   - { label: paper (IOS Press), url: "https://doi.org/10.3233/FAIA220211" }
   - { label: demo page, url: "https://hhai-conference.org/2022/2022/05/09/pd_paper_1040/" }
