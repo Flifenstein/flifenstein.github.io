@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const all = (await getCollection('writing', (w) => !w.data.draft)).sort((a, b) => a.data.order - b.data.order);
+const aistack = all.filter((w) => !w.data.personal);
+const personal = all.filter((w) => w.data.personal);
+const meta = (w: (typeof all)[number]) => [w.data.venue, w.data.role].filter(Boolean).join(' · ');
+---
+
+<Base title="Writing · Ioana Frîncu (Frincu)" description="Posts by Ioana Frîncu (Frincu), linking to where they live.">
+  <h1 class="page-title">Writing</h1>
+  <p class="label">At aistack, while working at imec</p>
+  <ul class="plain">
+    {
+      aistack.map((w) => (
+        <li>
+          <a href={w.data.url}>{w.data.title}</a>
+          <span class="meta">{meta(w)}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="label sep">Personal blog</p>
+  <ul class="plain">
+    {
+      personal.map((w) => (
+        <li><a href={w.data.url}>{w.data.title}</a></li>
+      ))
+    }
+  </ul>
+</Base>

@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) => a.data.order - b.data.order;
+const research = (await getCollection('projects', (p) => p.data.featured && !p.data.draft)).sort(byOrder);
+const allWriting = (await getCollection('writing', (w) => !w.data.draft)).sort(byOrder);
+const writing = allWriting.filter((w) => !w.data.personal).slice(0, 3);
+const personal = allWriting.filter((w) => w.data.personal);
+const meta = (w: (typeof allWriting)[number]) => [w.data.venue, w.data.role].filter(Boolean).join(' · ');
+
+// a project links to its blog post if it has one, otherwise to its entry on /research
+const href = (p: (typeof research)[number]) =>
+  p.data.links.find((l) => !l.url.startsWith('TODO'))?.url ?? `/research/#${p.id}`;
+---
+
+<Base title="Ioana Frîncu (Frincu): research on AI evaluation and safety" jsonLd>
+  <header class="hero">
+    <img class="portrait" src="/photo.jpg" width="168" height="168" alt="Portrait of Ioana Frîncu in a black bucket hat" />
+    <div>
+      <h1 class="name">Ioana Frîncu</h1>
+      <p class="links" id="contact">
+        <a href="https://github.com/flifenstein">GitHub</a>
+        <a href="https://www.linkedin.com/in/frincui">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=Y2m2NaoAAAAJ&hl=en">Scholar</a>
+        <a href="https://flifenstein.com">Blog</a>
+        <a href="/cv/">CV</a>
+        <span>f_ioana [at] tuta [dot] com</span>
+      </p>
+      <p>
+        I'm a product manager at aistack, imec's AI systems team in Ghent, where we run coding agents on real
+        hardware and measure what they cost, how fast they go, and whether their scores mean what they claim.
+        That last question pulled me toward AI safety, so I now work on evaluation awareness (SPAR, Fall 2026) and
+        on agents that peek at the answer key, and I'm heading for a PhD in AI evaluation.
+        Before imec I studied HCI and NLP at Twente and Aalto and worked at Microsoft's AI for Good Lab; off the
+        clock I hike long trails and play a gnome warlock.
+      </p>
+    </div>
+  </header>
+
+  <div class="cards">
+    <section class="card" aria-labelledby="research">
+      <h2 id="research">Research</h2>
+      <ul class="plain">
+        {
+          research.map((p) => (
+            <li>
+              <a href={href(p)}>{p.data.title}</a>
+              <span class="meta">{p.data.venue ?? p.data.context}, {p.data.year}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mono"><a href="/research/">All research →</a></p>
+    </section>
+
+    <section class="card" aria-labelledby="writing">
+      <h2 id="writing">Writing</h2>
+      <p class="label">At aistack, while working at imec</p>
+      <ul class="plain">
+        {
+          writing.map((w) => (
+            <li>
+              <a href={w.data.url}>{w.data.title}</a>
+              <span class="meta">{meta(w)}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="label sep">Personal blog</p>
+      <ul class="plain">
+        {
+          personal.map((w) => (
+            <li>
+              <a href={w.data.url}>{w.data.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mono"><a href="/writing/">All writing →</a></p>
+    </section>
+  </div>
+</Base>

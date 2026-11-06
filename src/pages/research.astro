@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const projects = (await getCollection('projects', (p) => !p.data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const entries = await Promise.all(projects.map(async (p) => ({ p, Content: (await render(p)).Content })));
+const isTodo = (u: string) => u.startsWith('TODO');
+---
+
+<Base title="Research · Ioana Frîncu (Frincu)" description="Research projects by Ioana Frîncu (Frincu): AI evaluation, eval awareness, benchmark integrity.">
+  <h1 class="page-title">Research</h1>
+  {
+    entries.map(({ p, Content }) => (
+      <article class="entry" id={p.id}>
+        <div class="entry-head">
+          <h2>{p.data.title}</h2>
+          <p class="meta">
+            {[p.data.year, p.data.context, `role: ${p.data.role}`, p.data.status && `status: ${p.data.status}`]
+              .filter(Boolean)
+              .join(' · ')}
+          </p>
+        </div>
+        <div class="entry-body">
+          <Content />
+        </div>
+        {p.data.links.length > 0 && <p class="label">Links</p>}
+        {p.data.links.length > 0 && (
+        <ul class="links">
+          {p.data.links.map((l) =>
+            isTodo(l.url) ? (
+              <li><span class="todo">{l.url}</span></li>
+            ) : (
+              <li><a href={l.url}>{l.label}</a></li>
+            ),
+          )}
+        </ul>
+        )}
+      </article>
+    ))
+  }
+</Base>

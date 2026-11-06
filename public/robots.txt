@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flifenstein.github.io/sitemap-index.xml
