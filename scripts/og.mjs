@@ -1,5 +1,5 @@
 // Regenerate public/og.png (1200x630): `npm run og`. Edit NAME / STATEMENT below first.
-// ponytail: renders with system serif; fonts are not embedded, swap in an HTML-to-image tool if you want Newsreader exactly
+// renders with a system sans; fonts are not embedded, swap in an HTML-to-image tool if you want Newsreader exactly
 import sharp from 'sharp';
 
 const NAME = 'Ioana Frîncu';
@@ -13,15 +13,15 @@ const wrap = (s, n) => s.split(' ').reduce((l, w) => {
 }, []);
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const lines = wrap(STATEMENT, 52)
-  .map((t, i) => `<text x="80" y="${290 + i * 52}" font-size="38" fill="#1C1B19">${esc(t)}</text>`)
+  .map((t, i) => `<text x="80" y="${290 + i * 52}" font-size="38" fill="#2E2A33">${esc(t)}</text>`)
   .join('');
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-  <rect width="1200" height="630" fill="#F5F2EC"/>
-  <rect x="80" y="82" width="64" height="4" fill="#C8862A"/>
-  <text x="80" y="190" font-size="84" font-family="Georgia, serif" fill="#1C1B19">${esc(NAME)}</text>
-  <g font-family="Georgia, serif">${lines}</g>
-  <text x="80" y="570" font-size="24" font-family="Menlo, monospace" fill="#6B6760">flifenstein.github.io</text>
+  <rect width="1200" height="630" fill="#FFF4EF"/>
+  <rect x="80" y="82" width="64" height="4" fill="#E8743B"/>
+  <text x="80" y="190" font-size="84" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" fill="#2E2A33">${esc(NAME)}</text>
+  <g font-family="DejaVu Sans, Helvetica, Arial, sans-serif">${lines}</g>
+  <text x="80" y="570" font-size="24" font-family="DejaVu Sans Mono, Menlo, monospace" fill="#665A62">flifenstein.github.io</text>
 </svg>`;
 
 await sharp(Buffer.from(svg)).png().toFile('public/og.png');

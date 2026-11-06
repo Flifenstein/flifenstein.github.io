@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2f5d50" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <style>@media (prefers-color-scheme: dark) { svg { stroke: #8fc1ae; } circle, .n { fill: #8fc1ae; } }</style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2f5a7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <style>@media (prefers-color-scheme: dark) { svg { stroke: #f7b8a5; } circle, .n { fill: #f7b8a5; } }</style>
   <path d="M5 13 L6 4 L12 8"/>
   <path d="M27 13 L26 4 L20 8"/>
   <path d="M12 8 Q16 6.5 20 8 Q28 11 28 18 Q28 27 16 27 Q4 27 4 18 Q4 11 12 8Z"/>
   <ellipse cx="11" cy="17" rx="3.2" ry="2.4"/>
   <ellipse cx="21" cy="17" rx="3.2" ry="2.4"/>
-  <circle cx="11.3" cy="17" r="0.8" fill="#2f5d50" stroke="none"/>
-  <circle cx="20.7" cy="17" r="0.8" fill="#2f5d50" stroke="none"/>
-  <path class="n" d="M14.5 21.5 h3 l-1.5 1.8z" fill="#2f5d50"/>
+  <circle cx="11.3" cy="17" r="0.8" fill="#2f5a7a" stroke="none"/>
+  <circle cx="20.7" cy="17" r="0.8" fill="#2f5a7a" stroke="none"/>
+  <path class="n" d="M14.5 21.5 h3 l-1.5 1.8z" fill="#2f5a7a"/>
 </svg>

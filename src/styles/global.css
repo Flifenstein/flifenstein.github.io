@@ -1,40 +1,43 @@
 /* Field-notebook theme. Tokens first, then base, then components. */
 
 :root {
-  --paper: #f5f2ec; /* background, warm off-white */
-  --paper-2: #ece7df; /* subtle panels, hover rows */
-  --ink: #1c1b19; /* body text */
-  --ink-muted: #6b6760; /* metadata, dates, captions */
-  --accent: #2f5d50; /* links, active nav, key labels */
-  --marker: #c8862a; /* DECORATIVE ONLY: underlines, bullets, focus ring */
-  --rule: #d9d3c8; /* hairlines */
+  /* palette taken from the portrait: peach backdrop, plum-grey hat, blue backpack */
+  --paper: #fff4ef; /* background, pale peach */
+  --paper-2: #fde3d9; /* panels, hover rows */
+  --ink: #2e2a33; /* body text, plum charcoal */
+  --ink-muted: #665a62; /* metadata, dates, captions */
+  --accent: #2f5a7a; /* links, active nav: backpack blue */
+  --marker: #e8743b; /* DECORATIVE ONLY: underlines, focus ring */
+  --rule: #f3d3c6; /* hairlines */
 
-  --serif: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
-  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --body: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+  --serif: var(--body); /* legacy token name */
+  --mono: var(--body); /* small text (meta, dates) uses the body face */
+  --pixel: 'Pixelify Sans', ui-monospace, monospace; /* labels and nav */
   color-scheme: light;
 }
 
 /* Dark follows the OS unless the visitor picked a theme with the toggle. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #15161a;
-    --paper-2: #1e2026;
-    --ink: #e8e4dc;
-    --ink-muted: #9c978e;
-    --accent: #8fc1ae;
-    --marker: #d9a05b;
-    --rule: #2c2e35;
+    --paper: #1f1b24;
+    --paper-2: #2a2430;
+    --ink: #f6e9e3;
+    --ink-muted: #b9a9ae;
+    --accent: #f7b8a5;
+    --marker: #8fb8d6;
+    --rule: #3a3240;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --paper: #15161a;
-  --paper-2: #1e2026;
-  --ink: #e8e4dc;
-  --ink-muted: #9c978e;
-  --accent: #8fc1ae;
-  --marker: #d9a05b;
-  --rule: #2c2e35;
+  --paper: #1f1b24;
+  --paper-2: #2a2430;
+  --ink: #f6e9e3;
+  --ink-muted: #b9a9ae;
+  --accent: #f7b8a5;
+  --marker: #8fb8d6;
+  --rule: #3a3240;
   color-scheme: dark;
 }
 
@@ -348,20 +351,43 @@ ul.plain li:first-child {
 }
 ul.plain li .meta {
   display: block;
-  margin: 0 0 0 1rem;
+  margin: 0;
 }
 .entry-body,
 .entry p {
   max-width: 68ch;
 }
 ul.plain li::before {
+  /* pixel sparkle, 4-frame sprite (public/sparkle.svg, 9px frames drawn at 2x) */
   content: '';
   display: inline-block;
-  width: 0.4rem;
-  height: 0.4rem;
-  background: var(--marker); /* decorative bullet */
-  margin-right: 0.6rem;
-  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  background: url('/sparkle.svg') 0 0 / 72px 18px no-repeat;
+  image-rendering: pixelated;
+  margin-right: 0.5rem;
+  vertical-align: -0.2em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  ul.plain li::before {
+    animation: sparkle 1.6s steps(4) infinite;
+  }
+  ul.plain li:nth-child(3n + 2)::before {
+    animation-delay: -0.5s;
+  }
+  ul.plain li:nth-child(3n)::before {
+    animation-delay: -1.1s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ul.plain li::before {
+    background-position: -36px 0; /* hold the big frame */
+  }
+}
+@keyframes sparkle {
+  to {
+    background-position: -72px 0;
+  }
 }
 
 .button {
@@ -412,4 +438,62 @@ footer {
 .questions {
   margin-top: 2rem;
   max-width: 68ch;
+}
+
+/* ---------- type: grotesque body, pixel labels ---------- */
+h1,
+h2,
+h3 {
+  font-weight: 650;
+}
+main h1.name {
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+.meta,
+.links,
+footer,
+.todo,
+dl.timeline dt {
+  font-size: 0.875rem;
+}
+.label,
+nav,
+.home-link,
+section > h2,
+.page-title,
+.entry-body h2,
+#theme-toggle,
+.button,
+.skip {
+  font-family: var(--pixel);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+.label,
+section > h2,
+.page-title,
+.entry-body h2 {
+  font-size: 0.95rem;
+}
+nav,
+.home-link,
+#theme-toggle,
+.button {
+  font-size: 1rem;
+}
+
+/* hanging indent so wrapped lines align with the text, not the sparkle */
+ul.plain li {
+  position: relative;
+  padding-left: calc(18px + 0.55rem);
+}
+ul.plain li::before {
+  position: absolute;
+  left: 0;
+  top: calc(0.35rem + 0.42em);
+  margin: 0;
+}
+.hero {
+  margin-top: 1.5rem;
 }
