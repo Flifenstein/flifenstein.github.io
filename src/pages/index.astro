@@ -16,7 +16,15 @@ const href = (p: (typeof research)[number]) =>
 
 <Base title="Ioana Frîncu (Frincu): research on AI evaluation and safety" jsonLd>
   <header class="hero">
-    <img class="portrait" src="/photo.jpg" width="168" height="168" alt="Portrait of Ioana Frîncu in a black bucket hat" />
+    <div class="portrait-wrap" id="portrait">
+      <div class="flip">
+        <img class="portrait face front" src="/photo.jpg" width="168" height="168" alt="Portrait of Ioana Frîncu in a black bucket hat" />
+        <img class="portrait face back" src="/meme.jpg" width="168" height="168" alt="The evil plotting raccoon meme: a raccoon rubbing its paws together" aria-hidden="true" loading="lazy" />
+      </div>
+      <button class="raccoon-btn" id="meme-toggle" type="button" aria-pressed="false" aria-label="Reveal my fav meme template" data-tip="reveal my fav meme template">
+        <img src="/raccoon.svg" width="24" height="20" alt="" />
+      </button>
+    </div>
     <div>
       <h1 class="name">Ioana Frîncu</h1>
       <p class="links" id="contact">
@@ -118,4 +126,19 @@ const href = (p: (typeof research)[number]) =>
       <p class="mono"><a href="/writing/">All writing →</a></p>
     </section>
   </div>
+  <script is:inline>
+    (function () {
+      var wrap = document.getElementById('portrait');
+      var btn = document.getElementById('meme-toggle');
+      var front = wrap.querySelector('.front');
+      var back = wrap.querySelector('.back');
+      btn.addEventListener('click', function () {
+        var on = wrap.classList.toggle('flipped');
+        btn.setAttribute('aria-pressed', String(on));
+        btn.dataset.tip = on ? 'back to me' : 'reveal my fav meme template';
+        front.setAttribute('aria-hidden', String(on));
+        back.setAttribute('aria-hidden', String(!on));
+      });
+    })();
+  </script>
 </Base>
