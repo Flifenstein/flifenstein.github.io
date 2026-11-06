@@ -50,11 +50,30 @@ const href = (p: (typeof research)[number]) =>
   <section class="questions" aria-labelledby="questions">
     <h2 id="questions">Questions I want to work on</h2>
     <ul class="plain">
-      <li>When a model says "this is a test" in its reasoning, does it act differently, and does awareness it never voices change behaviour too?</li>
-      <li>Why does one sentence of prohibition stop coding agents from peeking? Is that compliance, or noticing that someone is watching?</li>
-      <li>When a model explains what it did ("I remembered the fix"), how do we check it, and what does it mean when it is wrong?</li>
-      <li>What can the hardware side verify about how a model was run, without seeing the weights or the data?</li>
+      <li>
+        How can we detect when a language model is scheming, cheating or reward hacking, and use those signals to
+        steer it away from doing so?
+        <span class="take">I believe there is a way to see exactly how they do it. The traces are there, in the
+        reasoning, the internals and the shortcuts they take, and better evals should turn them into something we can
+        align against, not just report.</span>
+      </li>
+      <li>
+        What would a technically feasible compute governance regime look like if it accounted for real AI workloads
+        and inference, not only chips and data centres?
+        <span class="take">imec taught me how chips, supply chains and verification actually work. I want to show
+        where the EU's Chips Act 2.0 and Cloud and AI Development Act (CADA) proposals fail to connect to the AI Act,
+        and what their AI parts would need to verify.</span>
+      </li>
+      <li>
+        Which sandboxes and deployment practices make everyday use of AI safe by default, and how do we measure what
+        AI is doing to people, societies and economies?
+        <span class="take">Because right now, honestly, it's a mess.</span>
+      </li>
     </ul>
+    <p class="stance">
+      Where I stand: big fan of open-weight models, AI for good (I worked in the lab, so duh) and AI for science.
+      Anti-AI for exactly one thing, my personal blog posts. I write those myself.
+    </p>
   </section>
 
   <div class="cards">
