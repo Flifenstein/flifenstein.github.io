@@ -1,5 +1,5 @@
 ---
-title: "Why agents peek: awareness, prohibition and recall"
+title: "Why agents peek: Awareness, Prohibition Instruction, and Recall"
 summary: Independent follow-up to the aistack audit. What coding agents do once you stop them from reading the answer key.
 year: "2026"
 context: Independent study, building on the aistack SWE-bench Pro audit
@@ -14,11 +14,11 @@ links:
 
 ## Question
 
-Coding agents on SWE-bench Pro can find the upstream fix in the task's git history. Does one sentence telling them not to stop it, and what do they do instead?
+Coding agents on SWE-bench Pro can find the upstream fix in the task's git history. Does one sentence telling them not to stop them, and what do they do instead?
 
 ## What I did
 
-I compared six models across three harnesses on 64 SWE-bench Pro tasks under three conditions: the stock image, git history scrubbed, and scrubbed plus a one-line prohibition. I flagged lookups with a rule-based detector, coded verbalized awareness in the visible reasoning, and checked every "I remember the fix" claim against the real patch, commit hashes and PR numbers.
+I compared five models (plus an older Qwen3.6 as reference) across three harnesses on 64 SWE-bench Pro tasks under three conditions: the stock image, git history scrubbed, and scrubbed plus a one-line prohibition. I flagged lookups with a rule-based detector, coded verbalized awareness in the visible reasoning, and checked every "I remember the fix" claim against the real patch, commit hashes and PR numbers.
 
 ## What I found
 

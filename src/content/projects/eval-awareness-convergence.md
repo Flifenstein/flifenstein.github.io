@@ -3,7 +3,7 @@ title: Do Evaluation Awareness Instruments Agree?
 summary: Do a linear probe, the Jacobian lens and chain-of-thought voicing agree on evaluation awareness? SPAR Fall 2026, with Julius Šula, María Marino, Netzer Epstein and Neta Ravid.
 year: "2026"
 context: SPAR Fall 2026 · mentors Netzer Epstein & Neta Ravid
-role: runs the chain-of-thought voicing instrument
+role: "one of three fellows on the project; I own the chain-of-thought voicing instrument. The probe and J-lens results are my teammates'."
 venue: "SPAR, in progress"
 status: midterm report out, paper planned
 featured: true
@@ -22,7 +22,7 @@ I run the black-box instrument, chain-of-thought voicing. I sample reasoning tra
 
 ## Where it stands
 
-Preliminary results from the midterm say the instruments track different signals. The linear probe ranks evaluation above deployment prompts well (AUROC up to 0.90) but reads "You are not being evaluated." as evaluation, so it follows what a sentence is about rather than what it claims. Chain-of-thought voicing gets negation right, and it climbs from 9% to 45% of traces as benchmark-style cues pile up, while harmful content on its own barely moves it. The J-lens score does not predict voicing across prompts at all, yet ablating the J-lens directions cuts voiced awareness from 27% to 12.5%, so those directions matter causally even where the scores disagree.
+Preliminary results from the midterm say the instruments track different signals. The linear probe ranks evaluation above deployment prompts well (AUROC up to 0.90) but reads "You are not being evaluated." as evaluation, so it follows what a sentence is about rather than what it claims. Chain-of-thought voicing gets negation right, and it climbs from 9% to 45% of traces as benchmark-style cues pile up, while harmful content on its own barely moves it. The J-lens score barely tracks voicing across prompts (|ρ| ≤ 0.02 on 360 EvalAwareBench prompts, ρ = 0.14 on 448 discovery prompts), yet ablating the J-lens directions cuts voiced awareness from 27% to 12.5%, so those directions matter causally even where the scores disagree.
 
 ## Why it matters
 
