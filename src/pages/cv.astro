@@ -17,19 +17,49 @@ const training = [
   ['May 2026', 'BlueDot', 'Technical AI Safety'],
   ['Feb 2026', 'BlueDot', 'AGI Strategy'],
 ];
-const education = [
-  ['2021 – 2023', 'MSc Human–Computer Interaction & Design', 'EIT Digital double degree: University of Twente + Aalto University'],
-  ['2017 – 2021', 'BSc Communication Science + Philosophy Honors', 'University of Twente'],
+type Bullet = [text: string, href?: string];
+const education: [string, string, string, Bullet[]?][] = [
+  [
+    '2021 – 2023',
+    'EIT Digital double degree: MSc Interaction Technology (University of Twente) + MSc (Tech) Human-Computer Interaction & Design (Aalto University)',
+    '',
+    [
+      [
+        'Thesis "In Search of the Perfect Prompt" (Aalto, 2023; supervisor Lauri Juvela; with Iris.AI): prompt-tuned GPT-2 and Falcon-7B (Hugging Face PEFT, PyTorch) and compared them with prompt-engineered GPT-3.5 for scientific abstract generation.',
+        'https://aaltodoc.aalto.fi/items/170a001d-4e04-4a82-af04-ba386023ced4',
+      ],
+      ['Evaluated with ROUGE/F1, expert sensibleness/specificity/usefulness ratings, and a user study using the SASSI questionnaire (adapted for text).'],
+      ['Coursework: Machine Learning; Statistical NLP (n-gram and neural LMs, HMMs, machine translation); Conversational Agents (dialogue annotation, inter-annotator reliability); Affective Computing; user research methods; Computer Ethics.'],
+    ],
+  ],
+  [
+    '2017 – 2021',
+    'BSc Communication Science, University of Twente (minor: internship)',
+    '',
+    [
+      [
+        'Thesis "Into the Q storm": mixed-methods study of QAnon online communities. Scraped Reddit with Python (PRAW), ran sentiment analysis in R (Harvard-IV, NRC lexicons), built a codebook and double-coded the data with a second coder (Cohen\'s κ).',
+        'https://github.com/Flifenstein/BSc.-Thesis-Ioana-Frincu',
+      ],
+      ['Coursework: research methodology, measurement reliability and validity, inferential statistics (t-tests, chi-squared, multiple regression, ANOVA; SPSS).'],
+    ],
+  ],
+  [
+    'Extracurricular',
+    'Philosophy Honours Programme, University of Twente',
+    'on top of the BSc',
+    [['Six courses reading primary philosophical sources on knowledge, ethics and what makes us human, ending in two individual written synthesis essays.']],
+  ],
 ];
 // Courses from the official transcripts, picked for what matters to an advisor. No grades on purpose.
 const thesis = 'https://urn.fi/URN:NBN:fi:aalto-202310156390';
-const competencies: { area: string; note?: string; lead?: string; courses?: [string, string?][] }[] = [
+const competencies: { area: string; note?: string; lead?: string; courses?: [string, string?, string?][] }[] = [
   {
     area: 'Statistics & math',
     note: 'Teaching assistant in statistics and R at the University of Twente, 2 years',
     courses: [
       ['Research Methods & Descriptive Statistics'],
-      ['Quantitative Data Analysis 1 and 2'],
+      ['Quantitative Data Analysis 1 and 2', undefined, 'anova, probability and other core statistics, done in r'],
       ['Big Data Analytics'],
       ['Introduction to Mathematics + Calculus 1A'],
     ],
@@ -57,7 +87,7 @@ const competencies: { area: string; note?: string; lead?: string; courses?: [str
       ['Introduction to Human–Computer Interaction'],
       ['Human Centred Design'],
       ['Conversational Agents'],
-      ['Affective Computing'],
+      ['Affective Computing', undefined, 'lots of python, with the opencv library'],
     ],
   },
   {
@@ -80,7 +110,7 @@ const sections = [
   <section aria-labelledby="how-i-work">
     <h2 id="how-i-work">How I work</h2>
     <p>
-      When it comes to who I am as a professional, I think SpongeBob with extra agency. I show up full of enthusiasm and fuelled by curiosity. I don't wait to be handed tasks, and I'm at my most useful when a group of people needs to get to the same goal. I take the
+      When it comes to who I am as a professional, think SpongeBob with extra agency. I show up full of enthusiasm and fuelled by curiosity. I don't wait to be handed tasks, and I'm at my most useful when a group of people needs to get to the same goal. I take the
       boring tasks off people's plates so the experts can spend their time on the hard part.
     </p>
     <p>
@@ -96,13 +126,28 @@ const sections = [
       <section>
         <h2>{heading}</h2>
         <dl class="timeline">
-          {rows.map(([when, what, detail]) => (
+          {rows.map(([when, what, detail, bullets]) => (
             <div>
               <dt>{when}</dt>
               <dd>
                 {what}
                 {detail && <br />}
                 {detail && <span class="meta">{detail}</span>}
+                {bullets && (
+                  <ul class="plain">
+                    {bullets.map(([text, href]) => (
+                      <li>
+                        {text}
+                        {href && (
+                          <>
+                            {' '}
+                            <a href={href}>Link</a>
+                          </>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </dd>
             </div>
           ))}
@@ -123,8 +168,11 @@ const sections = [
               {c.note && (c.lead ? <span class="meta">{c.note}</span> : <p><strong>{c.note}</strong></p>)}
               {c.courses && (
                 <ul class="plain">
-                  {c.courses.map(([course, href]) => (
-                    <li>{href ? <a href={href}>{course}</a> : course}</li>
+                  {c.courses.map(([course, href, desc]) => (
+                    <li>
+                      {href ? <a href={href}>{course}</a> : course}
+                      {desc && <span class="meta">{desc}</span>}
+                    </li>
                   ))}
                 </ul>
               )}
