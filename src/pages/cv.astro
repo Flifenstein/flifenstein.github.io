@@ -29,7 +29,6 @@ const education: [string, string, string, Bullet[]?][] = [
         'https://aaltodoc.aalto.fi/items/170a001d-4e04-4a82-af04-ba386023ced4',
       ],
       ['Evaluated with ROUGE/F1, expert sensibleness/specificity/usefulness ratings, and a user study using the SASSI questionnaire (adapted for text).'],
-      ['Coursework: Machine Learning; Statistical NLP (n-gram and neural LMs, HMMs, machine translation); Conversational Agents (dialogue annotation, inter-annotator reliability); Affective Computing; user research methods; Computer Ethics.'],
     ],
   ],
   [
@@ -41,14 +40,12 @@ const education: [string, string, string, Bullet[]?][] = [
         'Thesis "Into the Q storm": mixed-methods study of QAnon online communities. Scraped Reddit with Python (PRAW), ran sentiment analysis in R (Harvard-IV, NRC lexicons), built a codebook and double-coded the data with a second coder (Cohen\'s κ).',
         'https://github.com/Flifenstein/BSc.-Thesis-Ioana-Frincu',
       ],
-      ['Coursework: research methodology, measurement reliability and validity, inferential statistics (t-tests, chi-squared, multiple regression, ANOVA; SPSS).'],
     ],
   ],
   [
     'Extracurricular',
     'Philosophy Honours Programme, University of Twente',
     'on top of the BSc',
-    [['Six courses reading primary philosophical sources on knowledge, ethics and what makes us human, ending in two individual written synthesis essays.']],
   ],
 ];
 // Courses from the official transcripts, picked for what matters to an advisor. No grades on purpose.
@@ -58,8 +55,9 @@ const competencies: { area: string; note?: string; lead?: string; courses?: [str
     area: 'Statistics & math',
     note: 'Teaching assistant in statistics and R at the University of Twente, 2 years',
     courses: [
-      ['Research Methods & Descriptive Statistics'],
-      ['Quantitative Data Analysis 1 and 2', undefined, 'anova, probability and other core statistics, done in r'],
+      ['Research Methods & Descriptive Statistics', undefined, 'research design, measurement reliability & validity, sampling, correlation, regression'],
+      ['Inferential Statistics', undefined, 't-tests, chi-squared, multiple regression, one- and two-way anova'],
+      ['Quantitative Data Analysis 1 and 2', undefined, 'hypothesis testing, anova, regression, probability, r'],
       ['Big Data Analytics'],
       ['Introduction to Mathematics + Calculus 1A'],
     ],
@@ -67,7 +65,7 @@ const competencies: { area: string; note?: string; lead?: string; courses?: [str
   {
     area: 'Research methods',
     courses: [
-      ['Concepts, Measures and Methods (MSc)'],
+      ['Concepts, Measures and Methods (MSc)', undefined, 'user research methods, interviews, surveys, diary & field studies, task analysis, card sorting, video coding'],
       ['Data Collection & Scale Development'],
       ['Qualitative Methodology 1–3'],
       ['Bachelor thesis'],
@@ -76,24 +74,33 @@ const competencies: { area: string; note?: string; lead?: string; courses?: [str
   {
     area: 'ML & NLP',
     courses: [
-      ['Machine Learning'],
-      ['Statistical Natural Language Processing'],
+      ['Machine Learning', undefined, 'regression, classification, clustering, pca, model validation, python, jupyter'],
+      ['Statistical Natural Language Processing', undefined, 'n-gram & neural language models, hmms, word2vec, machine translation, research project'],
       ['MSc thesis: In Search of the Perfect Prompt', thesis],
     ],
   },
   {
     area: 'HCI',
     courses: [
-      ['Introduction to Human–Computer Interaction'],
-      ['Human Centred Design'],
-      ['Conversational Agents'],
-      ['Affective Computing', undefined, 'lots of python, with the opencv library'],
+      ['Introduction to Human–Computer Interaction', undefined, 'interaction design, evaluation metrics & instruments'],
+      ['Human Centred Design', undefined, 'iterative hcd, prototyping, human-centred evaluation'],
+      ['User Interface Construction', undefined, 'building interactive uis for usability testing'],
+      ['Conversational Agents', undefined, 'dialogue annotation, inter-annotator reliability, built & tested a conversational agent'],
+      ['Affective Computing', undefined, 'collected & annotated affect data, built & evaluated an emotion-recognition app, python, opencv'],
+    ],
+  },
+  {
+    area: 'Ethics & philosophy',
+    courses: [
+      ['Computer Ethics', undefined, 'privacy, ai, data analytics, professional responsibility, case-analysis essays'],
+      ['Philosophy Honours Programme', undefined, 'primary philosophical sources, knowledge, ethics, philosophy of mind, two written synthesis essays'],
     ],
   },
   {
     area: 'Code',
     lead: 'Python, R, SQL, TypeScript, React',
     note: ' (used to know c++ and java)',
+    courses: [['Full Stack Web Development', undefined, 'react, node.js, express, mongodb']],
   },
 ];
 const sections = [
