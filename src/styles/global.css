@@ -440,14 +440,6 @@ footer {
   max-width: 68ch;
 }
 
-/* home: career history, same measure as the questions above it */
-.background {
-  max-width: 68ch;
-}
-.background > h2 {
-  margin-bottom: 0.5rem;
-}
-
 /* ---------- type: grotesque body, pixel labels ---------- */
 h1,
 h2,
